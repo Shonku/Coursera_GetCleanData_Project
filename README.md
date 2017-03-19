@@ -4,11 +4,11 @@ This repository hosts the R code and codebook files for the course "Getting and 
 
 ## Files
 
-Readme.md: This file. 
-CodeBook.md: describes the variables, the data, and any transformations or work that was performed to clean up the data 
-run_analysis.R: contains the code to perform the cleaning and generating the second tidy data set.
-SecondTidyDataSet.txt: Independent tidy data set with the average of each variable for each activity and 
-each subject. The SecondTidyDataSet is generated from the main data set (only the measurements 
+1. Readme.md: This file. 
+2. CodeBook.md: describes the variables, the data, and any transformations or work that was performed to clean up the data 
+3. run_analysis.R: contains the code to perform the cleaning and generating the second tidy data set.
+4. SecondTidyDataSet.txt: Independent tidy data set with the average of each variable for each activity and 
+each subject. The Second Tidy Data Set is generated from the main data set (only the measurements 
 on the mean and standard deviation for each measurement are extracted)
 
 ## How the script works
