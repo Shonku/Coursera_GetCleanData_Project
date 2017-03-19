@@ -1,12 +1,3 @@
-## To use the code
-1. Download source data from the URL below and unzip in the working directory where R code can be sourced/run
-   URL = https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-   Unzipping the source data will create the subdirectory "UCI HAR Dataset" in the working directory
-2. Copy run_analysis.R to the working directory. 
-3. Run the code: run_analysis.R 
-4. The code will generate the file "SecondTidyDataSet.txt" in the working directory.
-   Note: The code assumes all the data is present in UCI HAR Dataset subdirectory, un-compressed and with the same filenames.
-
 ## Source data
 The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone for
 Human Activity Recognition. Full description is available at: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
@@ -15,55 +6,52 @@ Human Activity Recognition. Full description is available at: http://archive.ics
 ## About R script - run_analysis.R
 
 The R code "run_analysis.R" performs the 5 following steps (as required in the assignment). The step numbers are commented in the code. 
-#Step 1: Merging the training and the test sets to create one data set.
-Step 1.1 Reading the training tables.
-Step 1.2 Reading testing tables
-Step 1.3 Reading feature vector and assigning column names
- Note: features.txt has 561 variables corresponding to 561 variables in X (test and train)
-Step 1.4 Reading activity labels and assigning column names
+* Step 1: Merging the training and the test sets to create one data set.
+	* Step 1.1 Reading the training tables.
+	* Step 1.2 Reading testing tables
+	* Step 1.3 Reading feature vector and assigning column names. ote: features.txt has 561 variables corresponding to 561 variables in X (test and train)
+	* Step 1.4 Reading activity labels and assigning column names
  Note: Six activities are (1 - WALKING, 2 - WALKING_UPSTAIRS, 3 - WALKING_DOWNSTAIRS, 4 - SITTING, 5 - STANDING, 6 - LAYING)
  The numbers above indicate the activity class. In the activity table column 1 is the activity class, column 2 is the name of activity
  Y (test, train) corresponds to activity column 1, i.e. the activity class
-Step 1.5 Assigning column names for Subject (identifies the subject who performed the activity)
-Step 1.6 Merging test and training datasets
+	* Step 1.5 Assigning column names for Subject (identifies the subject who performed the activity)
+	* Step 1.6 Merging test and training datasets
 
-# Step 2: Extracting only the measurements on the mean and standard deviation for each measurement.
+* Step 2: Extracting only the measurements on the mean and standard deviation for each measurement.
   Note: Activity and Subject information is also made part of this subset (since required later in step 5)
 
-# Step 3: Using descriptive activity names to name the activities in the data set
-# Step 4: Labeling the data set appropriately, with descriptive variable names.
+* Step 3: Using descriptive activity names to name the activities in the data set
+* Step 4: Labeling the data set appropriately, with descriptive variable names.
 Note: Since the variable names are preserved from the main dataset and they are already descriptive and follows a naming scheme, 
 nothing additional is done in steps 3 and 4. Activity names description is merged in step 5, before the output second tidy data file is saved
 
-# Step 5: Making second tidy data set and writing in txt file
-Step 5.1: Getting the mean data with the average of each variable for each activity and each subject.
+* Step 5: Making second tidy data set and writing in txt file
+	* Step 5.1: Getting the mean data with the average of each variable for each activity and each subject.
 Also the description of the activity is added to make it part of the file
-Step 5.2: Writing the second tidy data set to the file SecondTidyDataSet.txt
+	* Step 5.2: Writing the second tidy data set to the file SecondTidyDataSet.txt
 
 ## Variables in main dataset
 Detailed description of variables for the main dataset is present in the file "features_info.txt". Summary is presented below.
 The feature vector obtained from the accelerometer and gyroscope 3-axial raw signals has 561 features. The features include:
-a) Raw signals (time domain) after initial filtering: tBodyAcc,tGravityAcc, tBodyGyro
-b) The derivatives of raw signals (time domain): tBodyAccJerk, tBodyGyroJerk
+* Raw signals (time domain) after initial filtering: tBodyAcc,tGravityAcc, tBodyGyro
+* The derivatives of raw signals (time domain): tBodyAccJerk, tBodyGyroJerk
    Note: Each of above 5 signals have 3 components XYZ (so in 15 signals in total)
-c) The magnitudes of the above 5 signals (computed from the 3 XYZ components, used together): tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag
-d) The frequency domain representation for 5 signals: fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag
+* The magnitudes of the above 5 signals (computed from the 3 XYZ components, used together): tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag
+* The frequency domain representation for 5 signals: fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag
 From the above signals, the final set of feature variables were estimated based on statistical operations on signals. The operations are
 detailed in "features_info.txt"
-e) Five additional vectors obtained by averaging the signals in a signal window sample: gravityMean,tBodyAccMean,tBodyAccJerkMean,tBodyGyroMean,tBodyGyroJerkMean
+* Five additional vectors obtained by averaging the signals in a signal window sample: gravityMean,tBodyAccMean,tBodyAccJerkMean,tBodyGyroMean,tBodyGyroJerkMean
 
 
 ## Mapping of tables from source data to code variables
-X_train.txt -> train_X 
-y_train.txt -> train_Y 
-subject_train.txt -> train_Subject 
-
-X_test.txt -> test_X 
-y_test.txt -> test_Y 
-subject_test.txt -> test_Subject 
-
-features.txt -> features 
-activity_labels.txt -> activity_labels
+* X_train.txt -> train_X 
+* y_train.txt -> train_Y 
+* subject_train.txt -> train_Subject 
+* X_test.txt -> test_X 
+* y_test.txt -> test_Y 
+* subject_test.txt -> test_Subject 
+* features.txt -> features 
+* activity_labels.txt -> activity_labels
 
 ## Variables in "test", "train"  and merged data
 In step 1.6 (See above), the test and train datasets are obtained. Each have a total of 563 variables - 561 from the main dataset (features)
