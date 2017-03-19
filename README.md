@@ -12,12 +12,12 @@ each subject. The Second Tidy Data Set is generated from the main data set (only
 on the mean and standard deviation for each measurement are extracted)
 
 ## To use the code
-1. Download source data from the URL below and unzip in the working directory where R code can be sourced/run
+* Step 1: Download source data from the URL below and unzip in the working directory where R code can be sourced/run
    URL = https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
    Unzipping the source data will create the subdirectory "UCI HAR Dataset" in the working directory
-2. Copy run_analysis.R to the working directory. 
-3. Run the code: run_analysis.R 
-4. The code will generate the file "SecondTidyDataSet.txt" in the working directory.
+* Step 2: Copy run_analysis.R to the working directory. 
+* Step 3: Run the code: run_analysis.R 
+* Step 4: The code will generate the file "SecondTidyDataSet.txt" in the working directory.
    Note: The code assumes all the data is present in UCI HAR Dataset subdirectory, un-compressed and with the same filenames.
 
 ## How the script works
