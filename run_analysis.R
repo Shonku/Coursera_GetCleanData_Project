@@ -1,27 +1,16 @@
-#define presets
-fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-
-
-#getting the data from given URL
-if(!file.exists("./assignment_data")){dir.create("./assignment_data")}
-download.file(fileUrl,destfile="./assignment_data/FullDataset.zip")
-
-# Unzip the data to /assignment_data directory
-unzip(zipfile="./assignment_data/FullDataset.zip",exdir="./assignment_data")
-
 #Step 1: Merging the training and the test sets to create one data set.
 #Step 1.1  Reading the training tables:
-train_X <- read.table("./assignment_data/UCI HAR Dataset/train/X_train.txt")
-train_Y <- read.table("./assignment_data/UCI HAR Dataset/train/y_train.txt")
-train_Subject <- read.table("./assignment_data/UCI HAR Dataset/train/subject_train.txt")
+train_X <- read.table("./UCI HAR Dataset/train/X_train.txt")
+train_Y <- read.table("./UCI HAR Dataset/train/y_train.txt")
+train_Subject <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
 #Step 1.2 Reading testing tables:
-test_X <- read.table("./assignment_data/UCI HAR Dataset/test/X_test.txt")
-test_Y <- read.table("./assignment_data/UCI HAR Dataset/test/y_test.txt")
-test_Subject <- read.table("./assignment_data/UCI HAR Dataset/test/subject_test.txt")
+test_X <- read.table("./UCI HAR Dataset/test/X_test.txt")
+test_Y <- read.table("./UCI HAR Dataset/test/y_test.txt")
+test_Subject <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 
 #Step 1.3 Reading feature vector and assigning column names:
-features <- read.table('./assignment_data/UCI HAR Dataset/features.txt')
+features <- read.table('./UCI HAR Dataset/features.txt')
 # features.txt has 561 variables corresponding to 561 variables in X (test and train)
 # assigning column names for X
 colnames(test_X) <- features[,2] 
@@ -29,7 +18,7 @@ colnames(train_X) <- features[,2]
 
 #Step 1.4 Reading activity labels and assigning column names
 #Six activities (1 - WALKING, 2 - WALKING_UPSTAIRS, 3 - WALKING_DOWNSTAIRS, 4 - SITTING, 5 - STANDING, 6 - LAYING)
-activity_labels = read.table('./assignment_data/UCI HAR Dataset/activity_labels.txt')
+activity_labels = read.table('./UCI HAR Dataset/activity_labels.txt')
 # in this table column 1 is the activity class, column 2 is the name of activity
 colnames(activity_labels) <- c('activity_class','activity_name')
 # Y (test, train) corresponds to activity column 1, i.e. the activity class
@@ -65,5 +54,5 @@ TidyDataSet <- aggregate(. ~subject + activity_class, ts, mean)
 TidyDataSet <- TidyDataSet[order(TidyDataSet$subject, TidyDataSet$activity_class),]
 
 # Step 5.2 Write second tidy data set
-write.table(TidyDataSet, "SecondTidyDataSet.txt", row.name=FALSE)
+write.table(TidyDataSet, "./SecondTidyDataSet.txt", row.name=FALSE)
 
