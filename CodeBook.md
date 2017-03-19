@@ -6,6 +6,8 @@ Human Activity Recognition. Full description is available at: http://archive.ics
 ## About R script - run_analysis.R
 
 The R code "run_analysis.R" performs the 5 following steps (as required in the assignment). The step numbers are commented in the code. 
+(Note: README.md file in the repository (same as this CodeBook) lists details to run the code.) 
+
 * Step 1: Merging the training and the test sets to create one data set.
 	* Step 1.1 Reading the training tables.
 	* Step 1.2 Reading testing tables
