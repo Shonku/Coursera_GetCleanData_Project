@@ -41,17 +41,19 @@ merged_data <- rbind(train, test)
 MeanStdSubset <- merged_data[,c("activity_class","subject",colnames(merged_data)[grep("mean|std",colnames(merged_data))])]
 
 # Step 3: Use descriptive activity names to name the activities in the data set
-
-ts <- merge(MeanStdSubset, activity_labels, by='activity_class', all.x=TRUE)
-
+# Naming the activities by description is done in step 5. 
 # Step 4: Appropriately label the data set with descriptive variable names.
-# Since the variable names are preserved from the main dataset and they are already descriptive, nothing additional is done
+# Since the variable names are preserved from the main dataset and they are already descriptive, nothing additional 
+# is done in steps 3 and 4
+
 
 # Step 5: Make second tidy data set and write in txt file
-# Step 5.1: Get the mean data
 
-TidyDataSet <- aggregate(. ~subject + activity_class, ts, mean)
+# Step 5.1: Get the mean data
+TidyDataSet <- aggregate(. ~subject + activity_class, MeanStdSubset, mean)
 TidyDataSet <- TidyDataSet[order(TidyDataSet$subject, TidyDataSet$activity_class),]
+# Add the description of the activity to make it part of the file
+TidyDataSet <- merge(TidyDataSet, activity_labels, by='activity_class', all.x=TRUE)
 
 # Step 5.2 Write second tidy data set
 write.table(TidyDataSet, "./SecondTidyDataSet.txt", row.name=FALSE)
